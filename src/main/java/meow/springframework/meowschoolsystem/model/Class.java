@@ -1,12 +1,19 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
 import java.util.Set;
 import java.util.TreeSet;
 
+@Entity
+@Table(name = "Class")
 public class Class {
+    @Id
+    @Column(name = "claNo")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "building", nullable = false)
     private Character building;
-    private Set<ClassDetail> classDetails = new TreeSet<ClassDetail>();
 
     public Long getId() {
         return id;
@@ -22,9 +29,5 @@ public class Class {
 
     public void setBuilding(Character building) {
         this.building = building;
-    }
-
-    public Set<ClassDetail> getClassDetails() {
-        return classDetails;
     }
 }

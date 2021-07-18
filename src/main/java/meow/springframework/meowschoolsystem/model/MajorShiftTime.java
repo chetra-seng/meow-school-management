@@ -1,9 +1,17 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "MajorShiftTime")
 public class MajorShiftTime {
+    @Id
+    @Column(name = "shirtTimeNo")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "time", nullable = false)
     private String time;
-    private Major major;
 
     public Long getId() {
         return id;
@@ -19,13 +27,5 @@ public class MajorShiftTime {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public Major getMajor() {
-        return major;
-    }
-
-    public void setMajor(Major major) {
-        this.major = major;
     }
 }

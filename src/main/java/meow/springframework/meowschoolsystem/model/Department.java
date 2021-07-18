@@ -1,12 +1,19 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
 import java.util.Set;
 import java.util.TreeSet;
 
+@Entity
+@Table(name = "Department")
 public class Department {
+    @Id
+    @Column(name = "depNo")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "depName", nullable = false)
     private String name;
-    private Set<Major> majors = new TreeSet<Major>();
 
     public Long getId() {
         return id;
@@ -22,9 +29,5 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<Major> getMajors() {
-        return majors;
     }
 }

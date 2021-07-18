@@ -1,11 +1,18 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Attendance")
 public class Attendance {
+    @Id
+    @Column(name = "attNo")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "attDate", nullable = false)
     private LocalDate date;
-    private Student student;
 
     public Long getId() {
         return id;
@@ -21,13 +28,5 @@ public class Attendance {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 }

@@ -1,16 +1,39 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Teacher")
 public class Teacher {
+    @Id
+    @Column(name = "teaId")
+    @SequenceGenerator(
+            name="teacher_sequence",
+            sequenceName = "teacher_sequence",
+            allocationSize = 1,
+            initialValue = 1000001
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher_sequence")
     private Long id;
+
+    @Column(name="teaFName", nullable = false)
     private String firstName;
+
+    @Column(name="teaLName", nullable = false)
     private String lastName;
+
+    @Column(name="teaSex")
     private String sex;
+
+    @Column(name="teaDOB", nullable = false)
     private LocalDate birthDate;
+
+    @Column(name = "teaPhone", nullable = false, unique = true)
     private String phone;
+
+    @Column(name = "teaAdd")
     private String address;
-    private Subject subject;
 
     public Long getId() {
         return id;
@@ -68,11 +91,4 @@ public class Teacher {
         this.address = address;
     }
 
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
 }

@@ -1,21 +1,44 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
 
+@Entity
+@Table(name = "Student")
 public class Student {
+    @Id
+    @SequenceGenerator(
+            name = "student_sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1,
+            initialValue = 1000001
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
+    @Column(name = "stuID")
     private Long id;
+
+    @Column(name = "stuFName", nullable = false)
     private String firstName;
+
+    @Column(name = "stuLName", nullable = false)
     private String lastName;
+
+    @Column(name = "stuSex")
     private String sex;
+
+    @Column(name = "stuDOB", nullable = false)
     private LocalDate birthDate;
+
+    @Column(name = "stuPhone", nullable = false, unique = true)
     private String phone;
+
+    @Column(name = "stuAdd")
     private String address;
+
+    @Column(name = "stuYear", nullable = false)
     private Integer year;
-    private Guardian guardian;
-    private Set<Mark> marks = new TreeSet<Mark>();
-    private Set<Attendance> attendances = new TreeSet<Attendance>();
 
     public Long getId() {
         return id;
@@ -71,13 +94,5 @@ public class Student {
 
     public void setYear(Integer year) {
         this.year = year;
-    }
-
-    public Guardian getGuardian() {
-        return guardian;
-    }
-
-    public void setGuardian(Guardian guardian) {
-        this.guardian = guardian;
     }
 }

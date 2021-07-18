@@ -1,14 +1,21 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Mark")
 public class Mark {
+    @Id
+    @Column(name = "marNo")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "marTotal", nullable = false)
     private Integer mark;
-    private MarkType markType;
+
+    @Column(name = "marDate", nullable = false)
     private LocalDate date;
-    private Subject subject;
-    private Student student;
 
     public Long getId() {
         return id;
@@ -26,35 +33,11 @@ public class Mark {
         this.mark = mark;
     }
 
-    public MarkType getMarkType() {
-        return markType;
-    }
-
-    public void setMarkType(MarkType markType) {
-        this.markType = markType;
-    }
-
     public LocalDate getDate() {
         return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 }

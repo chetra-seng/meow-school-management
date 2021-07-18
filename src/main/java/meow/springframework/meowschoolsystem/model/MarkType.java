@@ -1,10 +1,20 @@
 package meow.springframework.meowschoolsystem.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "MarkType")
 public class MarkType {
+    @Id
+    @Column(name = "typeNo")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "max", nullable = false)
     private Integer max;
+
+    @Column(name = "type", nullable = false)
     private String type;
-    private Mark mark;
 
     public Long getId() {
         return id;
@@ -28,13 +38,5 @@ public class MarkType {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public Mark getMark() {
-        return mark;
-    }
-
-    public void setMark(Mark mark) {
-        this.mark = mark;
     }
 }
