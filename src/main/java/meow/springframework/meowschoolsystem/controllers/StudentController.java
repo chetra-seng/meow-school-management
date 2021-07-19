@@ -14,7 +14,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/students")
+    @GetMapping("/")
     public String listStudents(Model model){
         model.addAttribute("students", studentService.getAllStudents());
         return "students/all_students";
