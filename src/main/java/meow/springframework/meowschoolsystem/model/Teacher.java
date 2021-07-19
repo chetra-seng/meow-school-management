@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Teacher")
+@Table(name = "teacher")
 public class Teacher {
     @Id
-    @Column(name = "teaId")
+    @Column(name = "tea_id")
     @SequenceGenerator(
             name="teacher_sequence",
             sequenceName = "teacher_sequence",
@@ -17,22 +17,22 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher_sequence")
     private Long id;
 
-    @Column(name="teaFName", nullable = false)
+    @Column(name="tea_fname", nullable = false)
     private String firstName;
 
-    @Column(name="teaLName", nullable = false)
+    @Column(name="tea_lname", nullable = false)
     private String lastName;
 
-    @Column(name="teaSex")
+    @Column(name="tea_sex")
     private String sex;
 
-    @Column(name="teaDOB", nullable = false)
+    @Column(name="tea_dob", nullable = false)
     private LocalDate birthDate;
 
-    @Column(name = "teaPhone", nullable = false, unique = true)
+    @Column(name = "tea_phone", nullable = false, unique = true)
     private String phone;
 
-    @Column(name = "teaAdd")
+    @Column(name = "tea_add")
     private String address;
 
     public Long getId() {

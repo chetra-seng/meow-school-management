@@ -4,17 +4,17 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Mark")
+@Table(name = "mark")
 public class Mark {
     @Id
-    @Column(name = "marNo")
+    @Column(name = "mar_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "marTotal", nullable = false)
+    @Column(name = "mar_total", nullable = false)
     private Integer mark;
 
-    @Column(name = "marDate", nullable = false)
+    @Column(name = "mar_date", nullable = false)
     private LocalDate date;
 
     public Long getId() {

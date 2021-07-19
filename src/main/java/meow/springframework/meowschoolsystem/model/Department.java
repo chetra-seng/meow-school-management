@@ -5,14 +5,14 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @Entity
-@Table(name = "Department")
+@Table(name = "department")
 public class Department {
     @Id
-    @Column(name = "depNo")
+    @Column(name = "dep_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "depName", nullable = false)
+    @Column(name = "dep_name", nullable = false)
     private String name;
 
     public Long getId() {

@@ -5,17 +5,17 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @Entity
-@Table(name = "Subject")
+@Table(name = "subject")
 public class Subject {
     @Id
-    @Column(name = "subNo")
+    @Column(name = "sub_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "subName", nullable = false)
+    @Column(name = "sub_name", nullable = false)
     private String name;
 
-    @Column(name = "subDur", nullable = false)
+    @Column(name = "sub_dur", nullable = false)
     private Integer duration;
 
     public Long getId() {

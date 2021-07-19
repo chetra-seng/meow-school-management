@@ -3,10 +3,10 @@ package meow.springframework.meowschoolsystem.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "MajorShiftTime")
+@Table(name = "major_shifttime")
 public class MajorShiftTime {
     @Id
-    @Column(name = "shirtTimeNo")
+    @Column(name = "shifttime_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

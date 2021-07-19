@@ -5,10 +5,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @Entity
-@Table(name = "Guardian")
+@Table(name = "guardian")
 public class Guardian {
     @Id
-    @Column(name = "guaID")
+    @Column(name = "gua_id")
     @SequenceGenerator(
             name = "guardian_sequence",
             sequenceName = "guardian_sequence",
@@ -18,19 +18,19 @@ public class Guardian {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guardian_sequence")
     private Long id;
 
-    @Column(name = "guaFName", nullable = false)
+    @Column(name = "gua_fname", nullable = false)
     private String firstName;
 
-    @Column(name = "guaLName", nullable = false)
+    @Column(name = "gua_lname", nullable = false)
     private String lastName;
 
-    @Column(name = "guaSex")
+    @Column(name = "gua_sex")
     private String sex;
 
-    @Column(name = "guaPhone", nullable = false, unique = true)
+    @Column(name = "gua_phone", nullable = false, unique = true)
     private String phone;
 
-    @Column(name = "guaAdd")
+    @Column(name = "gua_add")
     private String address;
 
     public Long getId() {

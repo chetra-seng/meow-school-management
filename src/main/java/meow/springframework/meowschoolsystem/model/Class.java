@@ -5,10 +5,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @Entity
-@Table(name = "Class")
+@Table(name = "class")
 public class Class {
     @Id
-    @Column(name = "claNo")
+    @Column(name = "cla_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

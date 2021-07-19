@@ -1,12 +1,20 @@
 package meow.springframework.meowschoolsystem.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
     @Id
     @SequenceGenerator(
@@ -16,28 +24,28 @@ public class Student {
             initialValue = 1000001
     )
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
-    @Column(name = "stuID")
+    @Column(name = "stu_id")
     private Long id;
 
-    @Column(name = "stuFName", nullable = false)
+    @Column(name = "stu_fname", nullable = false)
     private String firstName;
 
-    @Column(name = "stuLName", nullable = false)
+    @Column(name = "stu_lname", nullable = false)
     private String lastName;
 
-    @Column(name = "stuSex")
+    @Column(name = "stu_sex")
     private String sex;
 
-    @Column(name = "stuDOB", nullable = false)
+    @Column(name = "stu_dob", nullable = false)
     private LocalDate birthDate;
 
-    @Column(name = "stuPhone", nullable = false, unique = true)
+    @Column(name = "stu_phone", nullable = false, unique = true)
     private String phone;
 
-    @Column(name = "stuAdd")
+    @Column(name = "stu_add")
     private String address;
 
-    @Column(name = "stuYear", nullable = false)
+    @Column(name = "stu_year", nullable = false)
     private Integer year;
 
     public Long getId() {

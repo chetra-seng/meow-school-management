@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Attendance")
+@Table(name = "attendance")
 public class Attendance {
     @Id
-    @Column(name = "attNo")
+    @Column(name = "att_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "attDate", nullable = false)
+    @Column(name = "att_date", nullable = false)
     private LocalDate date;
 
     public Long getId() {

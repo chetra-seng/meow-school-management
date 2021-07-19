@@ -3,10 +3,10 @@ package meow.springframework.meowschoolsystem.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "MarkType")
+@Table(name = "mark_type")
 public class MarkType {
     @Id
-    @Column(name = "typeNo")
+    @Column(name = "type_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

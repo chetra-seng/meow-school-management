@@ -5,20 +5,20 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @Entity
-@Table(name = "Major")
+@Table(name = "major")
 public class Major {
     @Id
-    @Column(name = "majNo")
+    @Column(name = "maj_no")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "majName", nullable = false)
+    @Column(name = "maj_name", nullable = false)
     private String name;
 
-    @Column(name = "majDur", nullable = false)
+    @Column(name = "maj_dur", nullable = false)
     private Integer duration;
 
-    @Column(name = "majDes")
+    @Column(name = "maj_des")
     private String description;
 
     public Long getId() {
