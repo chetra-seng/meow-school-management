@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>School Management System</title>
-</head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" th:fragment="school_header">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Department</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Teacher</a>
-        </li>
-      </ul>
-    </div>
+  <a class="navbar-brand" href="/">School Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Department</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Teacher</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Result</a>
+      </li>
+    </ul>
   </div>
 </nav>
 </body>

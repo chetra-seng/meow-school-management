@@ -1,4 +1,4 @@
-package meow.springframework.meowschoolsystem.bootstraps;
+package meow.springframework.meowschoolsystem.bootstrap;
 
 import meow.springframework.meowschoolsystem.model.Student;
 import meow.springframework.meowschoolsystem.repositories.StudentRepository;
