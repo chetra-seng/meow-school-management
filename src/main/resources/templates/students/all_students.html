@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>School Management System</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Sex</th>
+            <th>Year</th>
+        </tr>
+        <tr th:each="student:${students}">
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.sex}"></td>
+            <td th:text="${student.year}"></td>
+        </tr>
+    </table>
+</body>
+</html>

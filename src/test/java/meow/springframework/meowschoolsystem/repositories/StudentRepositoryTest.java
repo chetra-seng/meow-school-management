@@ -20,15 +20,7 @@ class StudentRepositoryTest {
     @Test
     public void saveStudentTest(){
         LocalDate localDate = LocalDate.parse("1999-11-05");
-        Student student = Student.builder()
-                .firstName("Chetra")
-                .lastName("Seng")
-                .sex("Male")
-                .birthDate(localDate)
-                .phone("092823836")
-                .address("Battambang")
-                .year(2)
-                .build();
+        Student student = new Student("Chetra", "Seng", "Male", localDate, "092823836", "Battambang", 2);
         studentRepository.save(student);
     }
 }

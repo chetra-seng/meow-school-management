@@ -12,9 +12,6 @@ import java.util.TreeSet;
 
 @Entity
 @Table(name = "student")
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Student {
     @Id
     @SequenceGenerator(
@@ -47,6 +44,19 @@ public class Student {
 
     @Column(name = "stu_year", nullable = false)
     private Integer year;
+
+    public Student() {
+    }
+
+    public Student(String firstName, String lastName, String sex, LocalDate birthDate, String phone, String address, Integer year) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.birthDate = birthDate;
+        this.phone = phone;
+        this.address = address;
+        this.year = year;
+    }
 
     public Long getId() {
         return id;
