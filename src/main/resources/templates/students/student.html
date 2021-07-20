@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <title>School Management System</title>
 </head>
-<body>
-
+<body class="bg-light">
+    <nav th:replace="fragments/header :: school_header"></nav>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 mt-5 pt-5">
+                <div class="row z-depth-3">
+                    <div class="col-sm-4 bg-info rounded-left">
+                        <div class="card-block text-center text-white">
+                            <i class="fas fa-user-tie fa-7x mt-5"></i>
+                            <h2 class="font-weight-bold mt-4">Student</h2>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 bg-light rounded-right">
+                        <h1 class="mt-3 text-center">Information</h1>
+                        <hr class="badge-primary mt-0 w-25">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">Name:</p>
+                                <h6 class="text-muted" th:text="${student.firstName} + ' ' + ${student.lastName}"></h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">ID:</p>
+                                <h6 class="text-muted" th:text="${student.id}"></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">BirthDate:</p>
+                                <h6 class="text-muted" th:text="${student.birthDate}"></h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">Academic Year:</p>
+                                <h6 class="text-muted" th:text="${student.year}"></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">Phone number:</p>
+                                <h6 class="text-muted" th:text="${student.phone}"></h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">Address:</p>
+                                <h6 class="text-muted" th:text="${student.address}"></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
