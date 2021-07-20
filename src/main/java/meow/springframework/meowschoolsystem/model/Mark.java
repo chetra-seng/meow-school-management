@@ -17,6 +17,14 @@ public class Mark {
     @Column(name = "mar_date", nullable = false)
     private LocalDate date;
 
+    public Mark() {
+    }
+
+    public Mark(Integer mark, LocalDate date) {
+        this.mark = mark;
+        this.date = date;
+    }
+
     public Long getId() {
         return id;
     }

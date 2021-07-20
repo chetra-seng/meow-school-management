@@ -13,6 +13,13 @@ public class MajorShiftTime {
     @Column(name = "time", nullable = false)
     private String time;
 
+    public MajorShiftTime() {
+    }
+
+    public MajorShiftTime(String time) {
+        this.time = time;
+    }
+
     public Long getId() {
         return id;
     }

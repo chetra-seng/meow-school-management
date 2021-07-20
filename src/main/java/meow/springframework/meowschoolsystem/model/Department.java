@@ -15,6 +15,13 @@ public class Department {
     @Column(name = "dep_name", nullable = false)
     private String name;
 
+    public Department() {
+    }
+
+    public Department(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

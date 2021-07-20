@@ -15,6 +15,13 @@ public class Class {
     @Column(name = "building", nullable = false)
     private Character building;
 
+    public Class() {
+    }
+
+    public Class(Character building) {
+        this.building = building;
+    }
+
     public Long getId() {
         return id;
     }

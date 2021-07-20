@@ -35,6 +35,18 @@ public class Teacher {
     @Column(name = "tea_add")
     private String address;
 
+    public Teacher() {
+    }
+
+    public Teacher(String firstName, String lastName, String sex, LocalDate birthDate, String phone, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.birthDate = birthDate;
+        this.phone = phone;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }

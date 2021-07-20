@@ -14,6 +14,13 @@ public class Attendance {
     @Column(name = "att_date", nullable = false)
     private LocalDate date;
 
+    public Attendance(){
+    }
+
+    public Attendance(LocalDate date) {
+        this.date = date;
+    }
+
     public Long getId() {
         return id;
     }

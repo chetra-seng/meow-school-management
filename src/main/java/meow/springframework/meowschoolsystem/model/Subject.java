@@ -18,6 +18,14 @@ public class Subject {
     @Column(name = "sub_dur", nullable = false)
     private Integer duration;
 
+    public Subject() {
+    }
+
+    public Subject(String name, Integer duration) {
+        this.name = name;
+        this.duration = duration;
+    }
+
     public Long getId() {
         return id;
     }

@@ -21,6 +21,15 @@ public class Major {
     @Column(name = "maj_des")
     private String description;
 
+    public Major() {
+    }
+
+    public Major(String name, Integer duration, String description) {
+        this.name = name;
+        this.duration = duration;
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }

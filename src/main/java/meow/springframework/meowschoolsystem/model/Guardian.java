@@ -33,6 +33,17 @@ public class Guardian {
     @Column(name = "gua_add")
     private String address;
 
+    public Guardian() {
+    }
+
+    public Guardian(String firstName, String lastName, String sex, String phone, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.phone = phone;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }

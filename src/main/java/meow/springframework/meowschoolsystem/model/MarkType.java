@@ -16,6 +16,14 @@ public class MarkType {
     @Column(name = "type", nullable = false)
     private String type;
 
+    public MarkType() {
+    }
+
+    public MarkType(Integer max, String type) {
+        this.max = max;
+        this.type = type;
+    }
+
     public Long getId() {
         return id;
     }
