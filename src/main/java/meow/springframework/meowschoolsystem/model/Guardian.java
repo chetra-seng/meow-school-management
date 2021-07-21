@@ -18,19 +18,19 @@ public class Guardian {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guardian_sequence")
     private Long id;
 
-    @Column(name = "gua_fname", nullable = false)
+    @Column(name = "gua_fname", nullable = false, columnDefinition = "varchar(30)")
     private String firstName;
 
-    @Column(name = "gua_lname", nullable = false)
+    @Column(name = "gua_lname", nullable = false, columnDefinition = "varchar(30)")
     private String lastName;
 
-    @Column(name = "gua_sex")
+    @Column(name = "gua_sex", columnDefinition = "varchar(6)")
     private String sex;
 
-    @Column(name = "gua_phone", nullable = false, unique = true)
+    @Column(name = "gua_phone", nullable = false, unique = true, columnDefinition = "char(10)")
     private String phone;
 
-    @Column(name = "gua_add")
+    @Column(name = "gua_add", columnDefinition = "varchar(100)")
     private String address;
 
     public Guardian() {

@@ -17,22 +17,22 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher_sequence")
     private Long id;
 
-    @Column(name="tea_fname", nullable = false)
+    @Column(name="tea_fname", nullable = false, columnDefinition = "varchar(30)")
     private String firstName;
 
-    @Column(name="tea_lname", nullable = false)
+    @Column(name="tea_lname", nullable = false, columnDefinition = "varchar(30)")
     private String lastName;
 
-    @Column(name="tea_sex")
+    @Column(name="tea_sex", columnDefinition = "varchar(6)")
     private String sex;
 
     @Column(name="tea_dob", nullable = false)
     private LocalDate birthDate;
 
-    @Column(name = "tea_phone", nullable = false, unique = true)
+    @Column(name = "tea_phone", nullable = false, unique = true, columnDefinition = "char(10)")
     private String phone;
 
-    @Column(name = "tea_add")
+    @Column(name = "tea_add", columnDefinition = "varchar(100)")
     private String address;
 
     public Teacher() {

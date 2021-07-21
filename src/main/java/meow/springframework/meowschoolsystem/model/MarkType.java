@@ -7,13 +7,13 @@ import javax.persistence.*;
 public class MarkType {
     @Id
     @Column(name = "type_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "max", nullable = false)
+    @Column(name = "max", nullable = false, columnDefinition = "int")
     private Integer max;
 
-    @Column(name = "type", nullable = false)
+    @Column(name = "type", nullable = false, columnDefinition = "varchar(10)")
     private String type;
 
     public MarkType() {

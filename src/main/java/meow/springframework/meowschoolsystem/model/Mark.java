@@ -8,10 +8,10 @@ import java.time.LocalDate;
 public class Mark {
     @Id
     @Column(name = "mar_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "mar_total", nullable = false)
+    @Column(name = "mar_total", nullable = false, columnDefinition = "int")
     private Integer mark;
 
     @Column(name = "mar_date", nullable = false)

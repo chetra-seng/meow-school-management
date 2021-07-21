@@ -8,14 +8,14 @@ import java.util.TreeSet;
 @Table(name = "subject")
 public class Subject {
     @Id
-    @Column(name = "sub_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "sub_no", columnDefinition = "int")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "sub_name", nullable = false)
+    @Column(name = "sub_name", nullable = false, columnDefinition = "varchar(30)")
     private String name;
 
-    @Column(name = "sub_dur", nullable = false)
+    @Column(name = "sub_dur", nullable = false, columnDefinition = "int")
     private Integer duration;
 
     public Subject() {

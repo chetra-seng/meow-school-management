@@ -8,11 +8,11 @@ import java.util.TreeSet;
 @Table(name = "department")
 public class Department {
     @Id
-    @Column(name = "dep_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "dep_no", columnDefinition = "int")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "dep_name", nullable = false)
+    @Column(name = "dep_name", nullable = false, columnDefinition = "varchar(30)")
     private String name;
 
     public Department() {

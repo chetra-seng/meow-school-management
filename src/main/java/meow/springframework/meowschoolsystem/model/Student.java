@@ -24,25 +24,25 @@ public class Student {
     @Column(name = "stu_id")
     private Long id;
 
-    @Column(name = "stu_fname", nullable = false)
+    @Column(name = "stu_fname", nullable = false, columnDefinition = "varchar(30)")
     private String firstName;
 
-    @Column(name = "stu_lname", nullable = false)
+    @Column(name = "stu_lname", nullable = false, columnDefinition = "varchar(30)")
     private String lastName;
 
-    @Column(name = "stu_sex")
+    @Column(name = "stu_sex", columnDefinition = "varchar(6)")
     private String sex;
 
     @Column(name = "stu_dob", nullable = false)
     private LocalDate birthDate;
 
-    @Column(name = "stu_phone", nullable = false, unique = true)
+    @Column(name = "stu_phone", nullable = false, unique = true, columnDefinition = "char(10)")
     private String phone;
 
-    @Column(name = "stu_add")
+    @Column(name = "stu_add", columnDefinition = "varchar(100)")
     private String address;
 
-    @Column(name = "stu_year", nullable = false)
+    @Column(name = "stu_year", nullable = false, columnDefinition = "int")
     private Integer year;
 
     public Student() {

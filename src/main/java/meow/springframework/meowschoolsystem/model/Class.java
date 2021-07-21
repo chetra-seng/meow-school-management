@@ -8,8 +8,8 @@ import java.util.TreeSet;
 @Table(name = "class")
 public class Class {
     @Id
-    @Column(name = "cla_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cla_no", columnDefinition = "int")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "building", nullable = false)

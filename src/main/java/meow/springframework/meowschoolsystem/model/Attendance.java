@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Attendance {
     @Id
     @Column(name = "att_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "att_date", nullable = false)

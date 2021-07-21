@@ -6,11 +6,11 @@ import javax.persistence.*;
 @Table(name = "major_shifttime")
 public class MajorShiftTime {
     @Id
-    @Column(name = "shifttime_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "shifttime_no", columnDefinition = "int")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "time", nullable = false)
+    @Column(name = "time", nullable = false, columnDefinition = "varchar(30)")
     private String time;
 
     public MajorShiftTime() {

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-@Component
 public class StudentBootStrap implements CommandLineRunner {
     private final StudentRepository studentRepository;
 

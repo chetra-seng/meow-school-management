@@ -8,17 +8,17 @@ import java.util.TreeSet;
 @Table(name = "major")
 public class Major {
     @Id
-    @Column(name = "maj_no")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "maj_no", columnDefinition = "int")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "maj_name", nullable = false)
+    @Column(name = "maj_name", nullable = false, columnDefinition = "varchar(30)")
     private String name;
 
-    @Column(name = "maj_dur", nullable = false)
+    @Column(name = "maj_dur", nullable = false, columnDefinition = "int")
     private Integer duration;
 
-    @Column(name = "maj_des")
+    @Column(name = "maj_des", columnDefinition = "varchar(100)")
     private String description;
 
     public Major() {
