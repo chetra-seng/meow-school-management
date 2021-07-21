@@ -17,6 +17,18 @@ public class Mark {
     @Column(name = "mar_date", nullable = false)
     private LocalDate date;
 
+    @ManyToOne
+    @JoinColumn(name = "sub_no", referencedColumnName = "sub_no")
+    private Subject subject;
+
+    @ManyToOne
+    @JoinColumn(name = "stu_id", referencedColumnName = "stu_id")
+    private Student student;
+
+    @OneToOne
+    @JoinColumn(name = "type_no", referencedColumnName = "type_no")
+    private MarkType markType;
+
     public Mark() {
     }
 

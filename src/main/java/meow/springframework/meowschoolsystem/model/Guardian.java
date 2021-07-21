@@ -1,6 +1,7 @@
 package meow.springframework.meowschoolsystem.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -9,13 +10,7 @@ import java.util.TreeSet;
 public class Guardian {
     @Id
     @Column(name = "gua_id")
-    @SequenceGenerator(
-            name = "guardian_sequence",
-            sequenceName = "guardian_sequence",
-            allocationSize = 1,
-            initialValue = 1000001
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guardian_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "gua_fname", nullable = false, columnDefinition = "varchar(30)")
@@ -32,6 +27,9 @@ public class Guardian {
 
     @Column(name = "gua_add", columnDefinition = "varchar(100)")
     private String address;
+
+    @OneToMany(mappedBy = "guardian")
+    private Set<Student> students = new HashSet<>();
 
     public Guardian() {
     }

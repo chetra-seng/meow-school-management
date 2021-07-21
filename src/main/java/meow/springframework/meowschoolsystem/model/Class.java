@@ -1,6 +1,9 @@
 package meow.springframework.meowschoolsystem.model;
 
+import org.hibernate.annotations.WhereJoinTable;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -14,6 +17,9 @@ public class Class {
 
     @Column(name = "building", nullable = false)
     private Character building;
+
+    @ManyToMany(mappedBy = "classes")
+    private Set<Major> majors = new HashSet<>();
 
     public Class() {
     }

@@ -1,6 +1,7 @@
 package meow.springframework.meowschoolsystem.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -14,6 +15,9 @@ public class Department {
 
     @Column(name = "dep_name", nullable = false, columnDefinition = "varchar(30)")
     private String name;
+
+    @OneToMany(mappedBy = "department")
+    private Set<Major> majors = new HashSet<>();
 
     public Department() {
     }

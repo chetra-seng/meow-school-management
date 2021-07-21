@@ -1,8 +1,8 @@
 package meow.springframework.meowschoolsystem.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 @Entity
 @Table(name = "major")
@@ -20,6 +20,29 @@ public class Major {
 
     @Column(name = "maj_des", columnDefinition = "varchar(100)")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "dep_no", referencedColumnName = "dep_no")
+    private Department department;
+
+    @OneToMany
+    @JoinColumn(name = "maj_no", referencedColumnName = "maj_no")
+    private Set<Subject> subjects = new HashSet<>();
+
+    @OneToMany
+    @JoinColumn(name = "maj_no", referencedColumnName = "maj_no")
+    private Set<MajorShiftTime> majorShiftTimes = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "class_detail",
+            joinColumns = @JoinColumn(name = "maj_no"),
+            inverseJoinColumns = @JoinColumn(name = "cla_no")
+    )
+    private Set<Class> classes = new HashSet<>();
+
+    @ManyToMany(mappedBy = "majors")
+    private Set<Student> students = new HashSet<>();
 
     public Major() {
     }

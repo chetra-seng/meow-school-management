@@ -8,13 +8,7 @@ import java.time.LocalDate;
 public class Teacher {
     @Id
     @Column(name = "tea_id")
-    @SequenceGenerator(
-            name="teacher_sequence",
-            sequenceName = "teacher_sequence",
-            allocationSize = 1,
-            initialValue = 1000001
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="tea_fname", nullable = false, columnDefinition = "varchar(30)")
@@ -34,6 +28,10 @@ public class Teacher {
 
     @Column(name = "tea_add", columnDefinition = "varchar(100)")
     private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "sub_no", referencedColumnName = "sub_no")
+    private Subject subject;
 
     public Teacher() {
     }

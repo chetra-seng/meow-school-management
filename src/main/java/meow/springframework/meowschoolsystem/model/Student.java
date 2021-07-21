@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -14,13 +15,7 @@ import java.util.TreeSet;
 @Table(name = "student")
 public class Student {
     @Id
-    @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1,
-            initialValue = 1000001
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stu_id")
     private Long id;
 
@@ -44,6 +39,25 @@ public class Student {
 
     @Column(name = "stu_year", nullable = false, columnDefinition = "int")
     private Integer year;
+
+    @ManyToMany
+    @JoinTable(
+            name = "major_detail",
+            joinColumns = @JoinColumn(name = "stu_id"),
+            inverseJoinColumns = @JoinColumn(name = "maj_no")
+    )
+    private Set<Class> majors = new HashSet<>();
+
+    @OneToMany(mappedBy = "student")
+    private Set<Mark> marks = new HashSet<>();
+
+    @OneToMany
+    @JoinColumn(name = "stu_id", referencedColumnName = "stu_id")
+    private Set<Attendance> attendances = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "gua_id", referencedColumnName = "gua_id")
+    private Guardian guardian;
 
     public Student() {
     }
@@ -120,5 +134,9 @@ public class Student {
 
     public void setYear(Integer year) {
         this.year = year;
+    }
+
+    public Guardian getGuardian() {
+        return guardian;
     }
 }

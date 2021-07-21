@@ -1,6 +1,7 @@
 package meow.springframework.meowschoolsystem.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -17,6 +18,12 @@ public class Subject {
 
     @Column(name = "sub_dur", nullable = false, columnDefinition = "int")
     private Integer duration;
+
+    @OneToMany(mappedBy = "subject")
+    private Set<Teacher> teachers = new HashSet<>();
+
+    @OneToMany(mappedBy = "subject")
+    private Set<Mark> marks = new HashSet<>();
 
     public Subject() {
     }
