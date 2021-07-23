@@ -16,7 +16,11 @@ public class Department {
     @Column(name = "dep_name", nullable = false, columnDefinition = "varchar(30)")
     private String name;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(
+            mappedBy = "department",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     private Set<Major> majors = new HashSet<>();
 
     public Department() {
@@ -40,5 +44,9 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Major> getMajors() {
+        return majors;
     }
 }

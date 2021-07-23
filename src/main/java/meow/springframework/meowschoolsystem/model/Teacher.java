@@ -101,4 +101,7 @@ public class Teacher {
         this.address = address;
     }
 
+    public Subject getSubject() {
+        return subject;
+    }
 }

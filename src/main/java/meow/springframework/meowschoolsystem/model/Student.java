@@ -40,18 +40,27 @@ public class Student {
     @Column(name = "stu_year", nullable = false, columnDefinition = "int")
     private Integer year;
 
-    @ManyToMany
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
     @JoinTable(
             name = "major_detail",
             joinColumns = @JoinColumn(name = "stu_id"),
             inverseJoinColumns = @JoinColumn(name = "maj_no")
     )
-    private Set<Class> majors = new HashSet<>();
+    private Set<Major> majors = new HashSet<>();
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "stu_id", referencedColumnName = "stu_id")
     private Set<Mark> marks = new HashSet<>();
 
-    @OneToMany
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     @JoinColumn(name = "stu_id", referencedColumnName = "stu_id")
     private Set<Attendance> attendances = new HashSet<>();
 
@@ -138,5 +147,17 @@ public class Student {
 
     public Guardian getGuardian() {
         return guardian;
+    }
+
+    public Set<Major> getMajors() {
+        return majors;
+    }
+
+    public Set<Mark> getMarks() {
+        return marks;
+    }
+
+    public Set<Attendance> getAttendances() {
+        return attendances;
     }
 }

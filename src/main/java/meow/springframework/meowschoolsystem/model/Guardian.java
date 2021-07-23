@@ -28,7 +28,11 @@ public class Guardian {
     @Column(name = "gua_add", columnDefinition = "varchar(100)")
     private String address;
 
-    @OneToMany(mappedBy = "guardian")
+    @OneToMany(
+            mappedBy = "guardian",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     private Set<Student> students = new HashSet<>();
 
     public Guardian() {

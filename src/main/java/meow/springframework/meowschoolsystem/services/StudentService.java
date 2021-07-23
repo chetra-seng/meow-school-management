@@ -1,10 +1,14 @@
 package meow.springframework.meowschoolsystem.services;
 
+import meow.springframework.meowschoolsystem.model.Attendance;
+import meow.springframework.meowschoolsystem.model.Guardian;
+import meow.springframework.meowschoolsystem.model.Mark;
 import meow.springframework.meowschoolsystem.model.Student;
 
 import java.util.List;
 
 public interface StudentService {
-    public List<Student> getAllStudents();
-    public Student getStudentById(Long id);
+    List<Student> getAllStudents();
+    Student getStudentById(Long id);
+    Guardian getStudentGuardian(Long id);
 }

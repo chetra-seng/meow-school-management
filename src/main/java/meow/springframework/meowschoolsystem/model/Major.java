@@ -25,15 +25,24 @@ public class Major {
     @JoinColumn(name = "dep_no", referencedColumnName = "dep_no")
     private Department department;
 
-    @OneToMany
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     @JoinColumn(name = "maj_no", referencedColumnName = "maj_no")
     private Set<Subject> subjects = new HashSet<>();
 
-    @OneToMany
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     @JoinColumn(name = "maj_no", referencedColumnName = "maj_no")
     private Set<MajorShiftTime> majorShiftTimes = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     @JoinTable(
             name = "class_detail",
             joinColumns = @JoinColumn(name = "maj_no"),
@@ -41,7 +50,11 @@ public class Major {
     )
     private Set<Class> classes = new HashSet<>();
 
-    @ManyToMany(mappedBy = "majors")
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "majors"
+    )
     private Set<Student> students = new HashSet<>();
 
     public Major() {
@@ -83,5 +96,25 @@ public class Major {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public Set<MajorShiftTime> getMajorShiftTimes() {
+        return majorShiftTimes;
+    }
+
+    public Set<Class> getClasses() {
+        return classes;
     }
 }

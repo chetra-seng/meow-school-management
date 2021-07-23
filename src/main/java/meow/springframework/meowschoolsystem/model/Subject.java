@@ -19,10 +19,18 @@ public class Subject {
     @Column(name = "sub_dur", nullable = false, columnDefinition = "int")
     private Integer duration;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(
+            mappedBy = "subject",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     private Set<Teacher> teachers = new HashSet<>();
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(
+            mappedBy = "subject",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     private Set<Mark> marks = new HashSet<>();
 
     public Subject() {
@@ -55,5 +63,13 @@ public class Subject {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public Set<Mark> getMarks() {
+        return marks;
     }
 }

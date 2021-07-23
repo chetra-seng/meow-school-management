@@ -12,13 +12,15 @@ import java.util.TreeSet;
 public class Class {
     @Id
     @Column(name = "cla_no", columnDefinition = "int")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "building", nullable = false)
     private Character building;
 
-    @ManyToMany(mappedBy = "classes")
+    @ManyToMany(mappedBy = "classes",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     private Set<Major> majors = new HashSet<>();
 
     public Class() {
@@ -42,5 +44,9 @@ public class Class {
 
     public void setBuilding(Character building) {
         this.building = building;
+    }
+
+    public Set<Major> getMajors() {
+        return majors;
     }
 }

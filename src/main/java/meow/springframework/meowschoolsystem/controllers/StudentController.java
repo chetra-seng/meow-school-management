@@ -24,6 +24,10 @@ public class StudentController {
     @RequestMapping("/student/{id}")
     public String displayStudent(@PathVariable Long id, Model model) {
         model.addAttribute("student", studentService.getStudentById(id));
+        model.addAttribute("attendances", studentService.getStudentById(id).getAttendances());
+        model.addAttribute("marks", studentService.getStudentById(id).getMarks());
+        model.addAttribute("majors", studentService.getStudentById(id).getMajors());
+        model.addAttribute("guardian", studentService.getStudentGuardian(id));
         return "students/student";
     }
 }

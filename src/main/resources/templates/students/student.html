@@ -9,18 +9,28 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
     <title>School Management System</title>
 </head>
-<body class="bg-light">
+<body>
     <nav th:replace="fragments/header :: school_header"></nav>
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-10 mt-5 pt-5">
+            <div class="col-md-10 mt-5 mb-5 pt-5">
                 <div class="row z-depth-3">
                     <div class="col-sm-4 bg-info rounded-left">
                         <div class="card-block text-center text-white">
-                            <i class="fas fa-user-tie fa-7x mt-5"></i>
+                            <i class="fas fa-user-tie fa-7x mt-5 pt-5"></i>
                             <h2 class="font-weight-bold mt-4">Student</h2>
+                            <a id = "mark-button" class="fas fa-book mr-2 mt-3 mb-3" style="font-size: 130%"></a>
+                            <a id = "attendance-button" class="fas fa-marker ml-2 mt-3 mb-3" style="font-size: 130%"></a>
                         </div>
                     </div>
                     <div class="col-sm-8 bg-light rounded-right">
@@ -52,8 +62,17 @@
                                 <h6 class="text-muted" th:text="${student.phone}"></h6>
                             </div>
                             <div class="col-sm-6">
-                                <p class="font-weight-bold">Address:</p>
-                                <h6 class="text-muted" th:text="${student.address}"></h6>
+                                <p class="font-weight-bold">Guardian Contact</p>
+                                <h6 class="text-muted" th:text="${guardian.getPhone()}"></h6>
+                            </div>
+                        </div>
+                        <hr class="bg-primary">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">Major</p>
+                                <div th:each="major : ${majors}">
+                                    <h6 class="text-muted" th:text="${major.getName()}"></h6>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -61,5 +80,63 @@
             </div>
         </div>
     </div>
+    <div id = "mark" class="container mt-3 mb-3" style="display: none;">
+        <h3>Student Mark</h3>
+        <table class="table table-bordered table-hover student-mark">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Mark</th>
+                <th scope="col">Type</th>
+                <th scope="col">Subject</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="mark, markStrat:${marks}">
+                <th th:text="${markStrat.count}">1</th>
+                <td th:text="${mark.getDate()}"></td>
+                <td th:text="${mark.getMark()}"></td>
+                <td th:text="${mark.getMarkType().getType()}"></td>
+                <td th:text="${mark.getSubject().getName()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id = "attendance" class="container mt-3 mb-3" style="display: none;">
+        <h3>Student Attendance</h3>
+        <table class="table table-bordered table-hover student-attendance">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="attendance, attStrat:${attendances}">
+                <th th:text="${attStrat.count}">1</th>
+                <td th:text="${attendance.getDate()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $('.student-attendance').DataTable();
+        $('.student-mark').DataTable();
+        $(document).ready(function(){
+            $("#mark-button").click(function(){
+                $("#mark").toggle(1000);
+            });
+        });
+        $(document).ready(function(){
+            $("#attendance-button").click(function(){
+                $("#attendance").toggle(1000);
+            });
+        });
+    </script>
 </body>
 </html>

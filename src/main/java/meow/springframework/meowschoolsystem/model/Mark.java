@@ -21,10 +21,6 @@ public class Mark {
     @JoinColumn(name = "sub_no", referencedColumnName = "sub_no")
     private Subject subject;
 
-    @ManyToOne
-    @JoinColumn(name = "stu_id", referencedColumnName = "stu_id")
-    private Student student;
-
     @OneToOne
     @JoinColumn(name = "type_no", referencedColumnName = "type_no")
     private MarkType markType;
@@ -59,5 +55,13 @@ public class Mark {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public MarkType getMarkType() {
+        return markType;
     }
 }

@@ -1,5 +1,8 @@
 package meow.springframework.meowschoolsystem.repositories;
 
+import meow.springframework.meowschoolsystem.model.Class;
+import meow.springframework.meowschoolsystem.model.Major;
+import meow.springframework.meowschoolsystem.model.Mark;
 import meow.springframework.meowschoolsystem.model.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Formatter;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -40,6 +42,38 @@ class StudentRepositoryTest {
             }
             catch (Exception ex){
                 System.out.println("");
+            }
+        }
+    }
+
+    @Test
+    public void viewStudentMajorTest(){
+        ArrayList<Student> students = new ArrayList<>();
+        students = (ArrayList<Student>) studentRepository.findAll();
+        for(Student student : students){
+            Set<Major> majors = new HashSet<Major>();
+            majors = student.getMajors();
+            Iterator<Major> majorIterator = majors.iterator();
+            System.out.println(student.getFirstName() + " " + student.getLastName());
+            while(majorIterator.hasNext()){
+                Major major = majorIterator.next();
+                System.out.println("  " + major.getName());
+            }
+        }
+    }
+
+    @Test
+    public void viewStudentMarkTest(){
+        ArrayList<Student> students = new ArrayList<>();
+        students = (ArrayList<Student>) studentRepository.findAll();
+        for(Student student : students){
+            Set<Mark> marks = new HashSet<>();
+            marks = student.getMarks();
+            Iterator<Mark> markIterator = marks.iterator();
+            System.out.println(student.getFirstName() + " " + student.getLastName());
+            while(markIterator.hasNext()){
+                Mark mark = markIterator.next();
+                System.out.println(" " + mark.getMark());
             }
         }
     }
