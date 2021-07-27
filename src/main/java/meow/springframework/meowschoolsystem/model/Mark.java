@@ -21,7 +21,7 @@ public class Mark {
     @JoinColumn(name = "sub_no", referencedColumnName = "sub_no")
     private Subject subject;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "type_no", referencedColumnName = "type_no")
     private MarkType markType;
 

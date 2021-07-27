@@ -1,6 +1,8 @@
 package meow.springframework.meowschoolsystem.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "mark_type")
@@ -15,6 +17,13 @@ public class MarkType {
 
     @Column(name = "type", nullable = false, columnDefinition = "varchar(10)")
     private String type;
+
+    @OneToMany(
+            mappedBy = "markType",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    Set<Mark> marks = new HashSet<>();
 
     public MarkType() {
     }

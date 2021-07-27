@@ -29,15 +29,4 @@ public class StudentServiceImpl implements StudentService{
     public Student getStudentById(Long id) {
         return(studentRepository.findById(id).get());
     }
-
-    @Override
-    public Guardian getStudentGuardian(Long id) {
-        Guardian guardian = studentRepository.findById(id).get().getGuardian();
-        if(guardian == null){
-            Guardian dummyGuardian = new Guardian("NA", "NA", "NA", "NA", "NA");
-            guardian = dummyGuardian;
-        }
-
-        return guardian;
-    }
 }
