@@ -3,7 +3,6 @@ package meow.springframework.meowschoolsystem.model;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 @Entity
 @Table(name = "department")

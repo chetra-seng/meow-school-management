@@ -18,7 +18,7 @@ public class Major {
     @Column(name = "maj_dur", nullable = false, columnDefinition = "int")
     private Integer duration;
 
-    @Column(name = "maj_des", columnDefinition = "varchar(100)")
+    @Column(name = "maj_des", columnDefinition = "text")
     private String description;
 
     @ManyToOne

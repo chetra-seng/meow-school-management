@@ -9,6 +9,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <!-- JS -->
     <link
             rel="stylesheet"
@@ -33,19 +37,104 @@
         <div class="container">
             <h1 class="text-center mb-5">Departments</h1>
             <div class="row">
-                <div class="animate__animated animate__backInDown col-md-6 col-lg-4 mt-3 mb-3" th:each="department : ${departments}">
+                <div class="animate__animated animate__backInDown col-md-6 col-lg-4 mt-3 mb-3" th:each="department, depCount : ${departments}">
                     <card class="card h-90">
                         <img class="card-img-top" alt="Photo of Department" th:src="@{{path}(path = ${department.getPath()})}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${department.getName()}"></h5>
                             <p class="card-text" th:text="${department.getDescription()}"></p>
-                            <button class="btn btn-primary">View Major</button>
+                            <button class="btn btn-primary toggle" th:attr="target-box = '#box'+ ${depCount.count}">View Major</button>
                         </div>
                     </card>
                 </div>
             </div>
         </div>
     </div>
+    <div class="wrapper">
+        <div class="container box mb-5" th:each="department, depCount: ${departments}" th:id="'box' + ${depCount.count}" style="display: none;">
+            <h1 class="mb-5" th:text="${department.getName()} + '\'s Majors'"></h1>
+            <div class="card mt-3" th:each="major, majCount : ${department.getMajors()}">
+                <div class="row">
+                    <div class="col-md-4 fa-7x">
+                        <div class="card-block text-center text-white bg-info pb-2">
+                            <a class="fas fa-book-open fa-xs mb-2 toggle-major" th:attr="target-major = '#major' + ${majCount.count} + ${depCount.count}"></a>
+                            <h3 class="font-weight-bold mt-2" th:text="${major.getName()}"></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <h2 class="font-weight-bold">DESCRIPTION</h2>
+                        <p th:text="${major.getDescription()}"></p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>Available Time</h4>
+                                <ul class="time-list">
+                                    <li th:each="time : ${major.getMajorShiftTimes()}" th:text="${time.getTime()}"></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <h4>Available Class</h4>
+                                <ul class="class-list">
+                                    <li th:each="class : ${major.getClasses()}" th:text="${class.getBuilding()} + ${class.getId()}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="container mt-3 mb-3" th:each="department, depCount : ${departments}">
+            <div class="major" style="display: none;" th:each="major, majCount:${department.getMajors()}" th:id="'major' + ${majCount.count} + ${depCount.count}">
+                <h3 th:text="'Subjects of ' + ${major.getName()}"></h3>
+                <table class="table table-bordered table-hover subject-data">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Credit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="subject, subCount:${major.getSubjects()}">
+                        <th th:text="${subCount.count}"></th>
+                        <td th:text="${subject.getName()}"></td>
+                        <td th:text="${subject.getDuration()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $('.subject-data').DataTable();
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function($){
+            $('.toggle').on('click', function(){
+                var targetBox = $(this).attr('target-box'); // Find the target box
+
+                $('.box').not(targetBox).hide(1000); // Hide all other boxes
+
+                $(targetBox).toggle(1000); // Toggle the current state of this one
+            });
+        });
+        jQuery(document).ready(function($){
+            $('.toggle-major').on('click', function(){
+                var targetMajor = $(this).attr('target-major'); // Find the target box
+
+                $('.major').not(targetMajor).hide(1000); // Hide all other boxes
+
+                $(targetMajor).toggle(1000); // Toggle the current state of this one
+            });
+        });
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
