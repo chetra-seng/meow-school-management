@@ -16,6 +16,12 @@ public class Department {
     @Column(name = "dep_name", nullable = false, columnDefinition = "varchar(30)")
     private String name;
 
+    @Column(name = "dep_des", columnDefinition = "text")
+    private String description;
+
+    @Column(name = "dep_path", columnDefinition = "varchar(50)")
+    private String path;
+
     @OneToMany(
             mappedBy = "department",
             cascade = CascadeType.ALL,
@@ -48,5 +54,21 @@ public class Department {
 
     public Set<Major> getMajors() {
         return majors;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

@@ -18,13 +18,13 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/students")
     public String listStudents(Model model){
         model.addAttribute("students", studentService.getAllStudents());
-        return "students/home";
+        return "students/all_students";
     }
 
-    @RequestMapping("/student/{id}")
+    @RequestMapping("/students/{id}")
     public String displayStudent(@PathVariable Long id, Model model) {
         model.addAttribute("student", studentService.getStudentById(id));
         return "students/student";
