@@ -1,0 +1,58 @@
+.site-content{
+    background-image: url(../school.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.wrapper{
+    padding-top: 60px;
+}
+
+.card-body{
+    text-align: center;
+    box-shadow: 0 15px 15px -8px rgba(0, 0, 0, 0.5);
+}
+
+.card-title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.time-list{
+    display: inline;
+    list-style: none;
+    padding: 0;
+}
+
+.time-list li{
+    display:inline;
+}
+
+.time-list li:after{
+    content: ", ";
+}
+
+.time-list li:last-child:after{
+    content: "";
+}
+
+.class-list{
+    display: inline;
+    list-style: none;
+    padding: 0;
+}
+
+.class-list li{
+    display:inline;
+}
+
+.class-list li:after{
+    content: ", ";
+}
+
+.class-list li:last-child:after{
+    content: "";
+}
