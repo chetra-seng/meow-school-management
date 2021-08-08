@@ -14,10 +14,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private final SuccessLoginHandler successLoginHandler;
+
+    public SecurityConfig(SuccessLoginHandler successLoginHandler) {
+        this.successLoginHandler = successLoginHandler;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("meow_admin").password(passwordEncoder().encode("chetra.admin")).roles("ADMIN");
+                .withUser("meow_adminStudent").password(passwordEncoder().encode("chetra.admin")).authorities("STUDENT_ADMIN")
+                .and()
+                .withUser("meow_adminDepartment").password(passwordEncoder().encode("chetra.admin")).authorities("DEPARTMENT_ADMIN");
     }
 
     @Override
@@ -31,13 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/students").permitAll()
                 .antMatchers("/students/*").permitAll()
                 .antMatchers("/teachers").permitAll()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/students/*").hasAuthority("STUDENT_ADMIN")
+                .antMatchers("/admin/students/**").hasAuthority("STUDENT_ADMIN")
+                .antMatchers("/admin/departments/*").hasAuthority("DEPARTMENT_ADMIN")
+                .antMatchers("/admin/departments/**").hasAuthority("DEPARTMENT_ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .formLogin()
-                .defaultSuccessUrl("/admin/students", true)
                 .failureUrl("/login?error=true")
+                .successHandler(successLoginHandler)
                 .and()
                 .logout().logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID");
