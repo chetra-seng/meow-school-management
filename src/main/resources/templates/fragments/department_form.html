@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container mt-5" th:fragment="form(type, action)">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <div class="card-body">
+        <h3 class="card-title text-center" th:text="${type} + ' Department'"></h3>
+        <form th:action="@{'/admin/departments' + ${action}}" th:object="${department}" method="POST">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Department name" name="name" th:field="*{name}">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="6" name="description" th:field="*{description}"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Image</label>
+            <input type="text" class="form-control" name="path" th:field="*{path}" placeholder="Image URL">
+          </div>
+          <button class="btn btn-primary" type="submit" th:text="${type} + ' Department'"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

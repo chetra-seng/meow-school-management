@@ -18,7 +18,7 @@ public class Department {
     @Column(name = "dep_des", columnDefinition = "text")
     private String description;
 
-    @Column(name = "dep_path", columnDefinition = "varchar(50)")
+    @Column(name = "dep_path", columnDefinition = "varchar(100)")
     private String path;
 
     @OneToMany(

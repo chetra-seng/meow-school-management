@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Add Student</title>
+</head>
+<body>
+<nav th:replace="fragments/admin_header :: header"></nav>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <div class="card-body">
+                <h3 class="card-title text-center">Add Student</h3>
+                <form th:action="@{/students}" th:object="${student}" method="POST">
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input type="text" class="form-control" placeholder="Enter first name" name="firstName" th:field="*{firstName}">
+                    </div>
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input type="text" class="form-control" placeholder="Enter last name" name="lastName" th:field="*{lastName}">
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Gender</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="sex" th:field="*{sex}">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="null">None</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label>Birthday</label>
+                            <input type="text" class="form-control" name="birthDate" th:field="*{birthDate}" id="picker">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input type="text" class="form-control" name="phone" th:field="*{phone}" placeholder="Phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="address" th:field="*{address}" placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                        <label>Major</label>
+                        <div class="input-group">
+                            <!-- Need Fix Here -->
+                            <select class="custom-select">
+                                <option th:object="${major}" th:each="major : ${majors}" th:text="${major.getName()}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary" role="button" href="#">Add Student</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('#picker').datetimepicker({
+        timepicker: false,
+        datepicker: true,
+        format: 'Y-m-d',
+        value: '1999-11-05'
+    })
+</script>
+</body>
+</html>
