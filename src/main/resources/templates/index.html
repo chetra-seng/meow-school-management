@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="wrapper">
-        <div class="container box mb-5" th:each="department, depCount: ${departments}" th:id="'box' + ${depCount.count}" style="display: none;">
+        <div class="container box" th:each="department, depCount: ${departments}" th:id="'box' + ${depCount.count}" style="display: none;">
             <h1 class="mb-5" th:text="${department.getName()} + '\'s Majors'"></h1>
             <div class="card mt-3" th:each="major, majCount : ${department.getMajors()}">
                 <div class="row">
@@ -88,7 +88,7 @@
         </div>
     </div>
     <div class="wrapper">
-        <div class="container mb-5" th:each="department, depCount : ${departments}">
+        <div class="container" th:each="department, depCount : ${departments}">
             <div class="major" style="display: none;" th:each="major, majCount:${department.getMajors()}" th:id="'major' + ${majCount.count} + ${depCount.count}">
                 <h3 th:text="'Subjects of ' + ${major.getName()}"></h3>
                 <table class="table table-bordered table-hover subject-data">
