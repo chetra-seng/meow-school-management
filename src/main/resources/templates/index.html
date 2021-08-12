@@ -60,7 +60,7 @@
             <div class="card mt-3" th:each="major, majCount : ${department.getMajors()}">
                 <div class="row">
                     <div class="col-md-4 fa-7x">
-                        <div class="card-block text-center text-white bg-info pb-2">
+                        <div class="card-block text-center text-white bg-primary pb-2">
                             <a class="fas fa-book-open fa-xs mb-2 toggle-major" th:attr="target-major = '#major' + ${majCount.count} + ${depCount.count}"></a>
                             <h3 class="font-weight-bold mt-2" th:text="${major.getName()}"></h3>
                         </div>
